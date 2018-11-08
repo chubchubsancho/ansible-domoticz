@@ -1,0 +1,19 @@
+---
+- name: "update apt cache"
+  apt:
+    update_cache: yes
+  tags:
+    - domoticz
+    - installation
+    - prerequisites
+
+- name: "install prerequisites package"
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ domoticz_prerequisites }}"
+  tags:
+    - domoticz
+    - installation
+    - prerequisites

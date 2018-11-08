@@ -1,0 +1,7 @@
+---
+- name: "install prerequisites"
+  include_tasks: "{{ ansible_os_famimly }}_prerequisites.yml"
+  tags:
+    - domoticz
+    - installation
+    - prerequisites

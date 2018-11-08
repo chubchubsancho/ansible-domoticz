@@ -1,0 +1,12 @@
+---
+domoticz_prerequisites:
+  - cmake
+  - make
+  - gcc
+  - g++
+  - libssl-dev
+  - git
+  - libcurl4-gutls-dev
+  - libusb-dev
+  - python3-dev
+  - zlib1g-dev
