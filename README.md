@@ -1,4 +1,4 @@
-#ansible-domoticz
+# ansible-domoticz
 
 1. [Overview](#overview)
 1. [Description](#role-description)
@@ -12,7 +12,11 @@
 
 ## Description
 
-This role deploy domoticz
+This role install all prerequisites to domoticz installation and finaly deploy it on system.
+
+Role is under development so feature will be add as they have been developped.
+
+for now it will just prepare system.
 
 ## Setup
 
