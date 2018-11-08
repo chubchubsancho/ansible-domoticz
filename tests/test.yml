@@ -1,0 +1,9 @@
+---
+- name: "install domoticz"
+  hosts: localhost
+  remote_user: root
+  roles: 
+    role: domoticz
+    tags:
+      - domoticz
+      - installation

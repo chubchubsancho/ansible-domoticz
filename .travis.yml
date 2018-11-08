@@ -1,0 +1,12 @@
+---
+sudo: required
+
+services:
+  - docker
+
+matrix:
+  include:
+  - name: "debian-stretch unit test"
+    env: 
+    - distribution=debian
+      version=stretch
