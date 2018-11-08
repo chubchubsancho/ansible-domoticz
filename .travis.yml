@@ -16,6 +16,7 @@ matrix:
       version=stretch
 
 before_install:
+  - 'cd chubchubsancho/ansible-domoticz'
   - 'sudo docker pull ${distribution}:${version}'
   - 'sudo docker build --no-cache --rm --file=travis/dockerfiles/Dockerfile.${distribution}-${version} --tag=${distribution}-${version}:ansible travis'
 
