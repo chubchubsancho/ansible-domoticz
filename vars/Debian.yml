@@ -6,7 +6,7 @@ domoticz_prerequisites:
   - g++
   - libssl-dev
   - git
-  - libcurl4-gutls-dev
+  - libcurl4-gnutls-dev
   - libusb-dev
   - python3-dev
   - zlib1g-dev
