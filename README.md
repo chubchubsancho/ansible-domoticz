@@ -1,5 +1,7 @@
 # ansible-domoticz
 
+[![Build Status](https://travis-ci.com/chubchubsancho/ansible-domoticz.svg?branch=master)](https://travis-ci.com/chubchubsancho/ansible-domoticz)
+
 1. [Overview](#overview)
 1. [Description](#role-description)
 1. [Setup](#setup)
