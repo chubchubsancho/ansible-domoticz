@@ -9,10 +9,8 @@
 
 - name: "install prerequisites package"
   apt:
-    name: "{{ item }}"
+    name: "{{ domoticz_prerequisites }}"
     state: present
-  with_items:
-    - "{{ domoticz_prerequisites }}"
   tags:
     - domoticz
     - installation
