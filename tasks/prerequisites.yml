@@ -1,5 +1,5 @@
 ---
-- name: "install packages on {{ ansible_os_family }} systems"
+- name: "install packages on debian based systems"
   apt:
     name: "{{ domoticz_prerequisites }}"
     state: present
@@ -10,7 +10,7 @@
     - prerequisites
   when: ansible_os_family == 'Debian'
   
-- name: "install packages on {{ ansible_os_family }} systems"
+- name: "install packages on redhat based systems"
   yum:
     name: "{{ domoticz_prerequisites }}"
     state: present

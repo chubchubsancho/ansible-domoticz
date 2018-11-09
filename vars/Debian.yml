@@ -1,12 +1,17 @@
 ---
 domoticz_prerequisites:
+  - build-essential
   - cmake
-  - make
-  - gcc
-  - g++
+  - libboost-dev
+  - libboost-thread-dev
+  - libboost-system-dev
+  - libsqlite3-dev
+  - subversion
+  - curl
+  - libcurl4-openssl-dev
+  - libusb-dev
+  - zlib1g-dev
   - libssl-dev
   - git
-  - libcurl4-gnutls-dev
-  - libusb-dev
-  - python3-dev
-  - zlib1g-dev
+
+domoticz_init: "/lib/systemd/system/domoticz.service"
