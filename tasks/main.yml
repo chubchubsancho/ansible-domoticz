@@ -1,12 +1,36 @@
 ---
-- name: "import specific variables for {{ ansible_distribution }} systems"
+- name: "create domoticz user and group"
+  include_tasks: users.yml
+  tags:
+    - domoticz
+    - installation
+    - users
+
+- name: "ensure download directory is present"
+  file:
+    path: "{{ domoticz_install_dir }}"
+    state: directory
+  tags:
+    - domoticz
+    - installation
+    - directory
+
+- name: "include {{ ansible_os_family }} specefic variables"
   include_vars: "{{ ansible_os_family }}.yml"
   tags:
     - domoticz
     - installation
+    - variables
+
+- name: "install prerequisites components on {{ ansible_distribution }}"
+  include_tasks: "prerequisites.yml"
+  tags:
+    - domoticz
+    - installation
+    - prerequisites
 
 - name: "install domoticz on {{ ansible_distribution }} systems"
-  include_tasks: "{{ ansible_os_family }}.yml"
+  include_tasks: "install.yml"
   tags:
     - domoticz
     - installation

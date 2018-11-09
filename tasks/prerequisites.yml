@@ -1,0 +1,22 @@
+---
+- name: "install packages on {{ ansible_os_family }} systems"
+  apt:
+    name: "{{ domoticz_prerequisites }}"
+    state: present
+    update_cache: true
+  tags:
+    - domoticz
+    - installation
+    - prerequisites
+  when: ansible_os_family == 'Debian'
+  
+- name: "install packages on {{ ansible_os_family }} systems"
+  yum:
+    name: "{{ domoticz_prerequisites }}"
+    state: present
+    update_cache: true
+  when: ansible_os_family == 'RedHat'
+  tags:
+    - domoticz
+    - installation
+    - prerequisites
