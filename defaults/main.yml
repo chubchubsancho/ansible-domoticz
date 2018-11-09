@@ -1,1 +1,12 @@
 ---
+# The user which the Domoticz daemon run as
+domoticz_user: domoticz
+
+# The group which the Domoticz daemon run as
+domoticz_group: domoticz
+
+# The directory where the downloaded files will be placed
+domoticz_download_dir: /home/domoticz
+
+# The name of the untarred Domoticz directory
+domoticz_src: domoticz

@@ -1,0 +1,20 @@
+---
+- name: "create Domoticz group"
+  group:
+    name: "{{ domoticz_group }}"
+    state: present
+  tags:
+    - domoticz
+    - installation
+    - users
+
+- name: "create Domoticz user"
+  user:
+    name: "{{ domoticz_user }}"
+    groups: "{{ domoticz_group }}"
+    state: present
+  tags:
+    - domoticz
+    - installation
+    - users
+  
