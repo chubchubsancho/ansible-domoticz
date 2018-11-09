@@ -29,8 +29,8 @@
     - installation
     - prerequisites
 
-- name: "install domoticz on {{ ansible_distribution }} systems"
-  include_tasks: "install.yml"
-  tags:
-    - domoticz
-    - installation
+# - name: "install domoticz on {{ ansible_distribution }} systems"
+#   include_tasks: "install.yml"
+#   tags:
+#     - domoticz
+#     - installation
