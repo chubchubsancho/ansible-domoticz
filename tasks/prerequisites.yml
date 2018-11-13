@@ -9,7 +9,7 @@
     - installation
     - prerequisites
   when: ansible_os_family == 'Debian'
-  
+
 - name: "install packages on redhat based systems"
   yum:
     name: "{{ domoticz_prerequisites }}"

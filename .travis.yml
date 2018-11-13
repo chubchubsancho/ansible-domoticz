@@ -10,9 +10,7 @@ env:
 
 matrix:
   include:
-    - env: 
-
-
+    - env:
 
 before_install:
   - sudo apt-get -qq update
