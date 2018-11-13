@@ -10,7 +10,7 @@ driver:
 lint:
   name: yamllint
   options:
-    config-files: rules/yaml-lint.yml
+    config-file: rules/yaml-lint.yml
 
 platforms:
   - name: domoticz-Debian9
