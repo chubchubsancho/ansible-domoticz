@@ -1,0 +1,27 @@
+---
+dependency:
+  name: galaxy
+  options:
+    role-files: requirements.yml
+
+driver:
+  name: docker
+
+lint:
+  name: yamllint
+  options:
+    config-files: ${DEV_MOLECULE_RULES}/yaml-lint.yml
+
+platforms:
+  - name: domoticz-Debian9
+    image: 
+
+provisioner:
+  name: ansible
+  config_options:
+    defaults:
+  lint:
+    name: ansible-lint
+    options:
+      c: ${DEV_MOLECULE_RULES}/ansible-lint.yml
+  
