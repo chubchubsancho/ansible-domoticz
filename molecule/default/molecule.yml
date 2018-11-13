@@ -10,7 +10,7 @@ driver:
 lint:
   name: yamllint
   options:
-    config-file: rules/yaml-lint.yml
+    config-file: molecule/default/rules/yaml-lint.yml
 
 platforms:
   - name: domoticz-Debian9
@@ -22,5 +22,5 @@ provisioner:
     name: ansible-lint
     options:
       vvv: true
-      # c: rules/ansible-lint.yml
+      # c: molecule/default/rules/ansible-lint.yml
   
