@@ -1,5 +1,5 @@
 ---
-- name: "install packages on debian based systems"
+- name: "install packages on debian systems"
   apt:
     name: "{{ domoticz_prerequisites }}"
     state: present
