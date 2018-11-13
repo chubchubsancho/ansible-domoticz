@@ -9,8 +9,8 @@ driver:
 
 lint:
   name: yamllint
-  options:
-    config-file: molecule/default/rules/yaml-lint.yml
+  # options:
+    # config-file: molecule/default/rules/yaml-lint.yml
 
 platforms:
   - name: domoticz-Debian9
