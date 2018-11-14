@@ -9,16 +9,16 @@
     User= {{ domoticz_user }}
     Group= {{ domoticz_group }}
     {% if domoticz_https %}
-    ExecStart={{ domoticz_download_dir }}/{{ domoticz_src }}/domoticz -www {{ domoticz_port }} -sslwww {{ domoticz_https_port }} -sslcert {{ domoticz_ssl_cert }}
+    ExecStart={{ domoticz_download_dir }}/{{ domoticz_install_dir }}/domoticz -www {{ domoticz_port }} -sslwww {{ domoticz_https_port }} -sslcert {{ domoticz_ssl_cert }}
     {% else %}
-    ExecStart={{ domoticz_download_dir }}/{{ domoticz_src }}/domoticz -www {{ domoticz_port }} -sslwww 0
+    ExecStart={{ domoticz_download_dir }}/{{ domoticz_install_dir }}/domoticz -www {{ domoticz_port }} -sslwww 0
     {% endif %}
-    WorkingDirectory={{ domoticz_download_dir }}/{{ domoticz_src }}
+    WorkingDirectory={{ domoticz_download_dir }}/{{ domoticz_install_dir }}
     {% if ansible_distribution == 'Ubuntu' and ansible_distribution_version|int >= 16.04 %}
     CapabilityBoundingSet=CAP_NET_BIND_SERVICE
     {% endif %}
     {% if ansible_distribution == 'Ubuntu' and ansible_distribution_version|int < 16.04 %}
-    ExecStartPre=setcap 'cap_net_bind_service=+ep' {{ domoticz_download_dir }}/{{ domoticz_src }}/domoticz
+    ExecStartPre=setcap 'cap_net_bind_service=+ep' {{ domoticz_download_dir }}/{{ domoticz_install_dir }}/domoticz
     {% endif %}
     Restart=on-failure
     RestartSec=1m
