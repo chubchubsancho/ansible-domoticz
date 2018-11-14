@@ -20,7 +20,7 @@
 
 - name: "autostart domoticz and restart service"
   systemd:
-    name: domoticz
+    name: domoticz.service
     enabled: true
     daemon_reload: true
     state: started
