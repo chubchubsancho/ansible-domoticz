@@ -34,6 +34,26 @@
   tags:
     - domoticz
     - installation
+  when:
+    - not domoticz_beta
+    - not domoticz_source
+
+- name: "install domoticz beta on {{ ansible_distribution }} systems"
+  include_tasks: "install_beta.yml"
+  tags:
+    - domoticz
+    - installation
+  when:
+    - domoticz_beta
+    - not domoticz_source
+
+- name: "compile domoticz on {{ ansible_distribution }} systems"
+  include_tasks: "compile.yml"
+  tags:
+    - domoticz
+    - installation
+  when:
+    - domoticz_source
 
 - name: "configure domoticz autostart"
   include_tasks: "autostart.yml"

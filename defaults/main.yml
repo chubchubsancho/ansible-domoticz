@@ -1,15 +1,15 @@
 ---
 # The user which the Domoticz daemon run as
-domoticz_user: domoticz
+domoticz_user: "domoticz"
 
 # The group which the Domoticz daemon run as
-domoticz_group: domoticz
+domoticz_group: "domoticz"
 
 # The directory where the downloaded files will be placed
-domoticz_download_dir: /home/domoticz
+domoticz_download_dir: "/home/domoticz"
 
 # The name of the untarred Domoticz directory
-domoticz_src: domoticz
+domoticz_install_dir: "domoticz"
 
 # The domoticz port
 domoticz_port: 8080
@@ -17,3 +17,9 @@ domoticz_port: 8080
 # Use SSL for domoticz
 domoticz_https: false
 domoticz_https_port: 8081
+
+# install Domoticz beta
+domoticz_beta: false
+
+# compile domoticz from source
+domoticz_source: false
