@@ -19,6 +19,8 @@
         - installation
         - compile
     - command: "make -j 3"
+      args:
+        chdir: "{{ domoticz_download_dir }}/{{ domoticz_src }}"
       tags:
         - domoticz
         - installation
