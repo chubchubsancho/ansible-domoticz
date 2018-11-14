@@ -24,14 +24,8 @@
     enabled: true
     daemon_reload: true
     state: started
+  register: domoticz_status
   tags:
     - domoticz
     - installation
     - autostart
-
-- name: "debug service status"
-  block:
-    - command: "systemctl status domoticz"
-      register: domoticz_status
-    - debug:
-        var: domoticz_status
