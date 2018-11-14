@@ -2,7 +2,7 @@
 - name: "copy init script for systemd"
   template:
     src: init-systemd.j2
-    dest: "{{ domoticz_init }}"
+    dest: "{{ domoticz_systemd }}"
     owner: root
     group: root
     mode: 0775
@@ -10,6 +10,13 @@
     - domoticz
     - installation
     - autostart
+
+- name: "debug init script"
+  block:
+    - command: "cat /{{ domoticz_systemd }}"
+      register: result
+    - debug:
+        var: result
 
 - name: "autostart domoticz and restart service"
   systemd:
@@ -21,3 +28,10 @@
     - domoticz
     - installation
     - autostart
+
+- name: "debug service status"
+  block:
+    - command: "systemctl status domoticz"
+      register: domoticz_status
+    - debug:
+        var: domoticz_status

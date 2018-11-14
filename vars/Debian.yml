@@ -15,4 +15,4 @@ domoticz_prerequisites:
   - git
   - python3-dev
 
-domoticz_init: "/etc/systemd/system/domoticz.service"
+domoticz_systemd: "/etc/systemd/system/domoticz.service"
