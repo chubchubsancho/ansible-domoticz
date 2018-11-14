@@ -1,0 +1,15 @@
+---
+- name: "copy init script for systemd"
+  template:
+    src: init-systemd.j2
+    dest: "{{ domoticz_init }}"
+    owner: root
+    group: root
+    mode: 0775
+
+- name: "autostart domoticz and restart service"
+  systemd:
+    name: domoticz
+    enabled: true
+    daemon_reload: true
+  notify: restart domoticz

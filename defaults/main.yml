@@ -10,3 +10,10 @@ domoticz_download_dir: /home/domoticz
 
 # The name of the untarred Domoticz directory
 domoticz_src: domoticz
+
+# The domoticz port
+domoticz_port: 8080
+
+# Use SSL for domoticz
+domoticz_https: false
+domoticz_https_port: 8081

@@ -1,1 +1,5 @@
 ---
+- name: "restart domoticz"
+  service:
+    name: domoticz
+    state: restarted

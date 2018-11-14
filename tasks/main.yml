@@ -34,3 +34,10 @@
   tags:
     - domoticz
     - installation
+
+- name: "configure domoticz autostart"
+  include_tasks: "autostart.yml"
+  tags:
+    - domoticz
+    - installation
+    - autostart
