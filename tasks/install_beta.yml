@@ -1,0 +1,21 @@
+---
+- name: "download domoticz beta package"
+  get_url:
+    url: "{{ domoticz_beta_url }}/{{ domoticz_package }}"
+    dest: "{{ domoticz_download_dir }}"
+  tags:
+    - domoticz
+    - installation
+    - release
+
+- name: "unarchive domoticz beta package"
+  unarchive:
+    src: "{{ domoticz_download_dir }}/{{ domoticz_package }}"
+    dest: "{{ domoticz_download_dir }}/{{ domoticz_install_dir }}"
+    owner: "{{ domoticz_user }}"
+    group: "{{ domoticz_group }}"
+    remote_src: true
+  tags:
+    - domoticz
+    - installation
+    - release
