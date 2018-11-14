@@ -6,10 +6,18 @@
     owner: root
     group: root
     mode: 0775
+  tags:
+    - domoticz
+    - installation
+    - autostart
 
 - name: "autostart domoticz and restart service"
   systemd:
     name: domoticz
     enabled: true
     daemon_reload: true
-  notify: restart domoticz
+    state: started
+  tags:
+    - domoticz
+    - installation
+    - autostart
