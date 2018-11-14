@@ -3,9 +3,9 @@
 domoticz_repo: "https://github.com/domoticz/domoticz.git"
 
 # domoticz release url
-domoticz_release_url: "https://release.domoticz.com/release/?dir=release"
+domoticz_release_url: "https://releases.domoticz.com/releases/?dir=release"
 
 # domoticz beta url
-domoticz_beta_url: "https://release.domoticz.com/release/?dir=beta"
+domoticz_beta_url: "https://releases.domoticz.com/releases/?dir=beta"
 
 domoticz_package: "domoticz_linux_x86_64.tgz"
