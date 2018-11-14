@@ -1,15 +1,4 @@
 ---
-# - name: "create Domoticz source directory"
-#   file:
-#     name: "{{ domoticz_src }}"
-#     owner: "{{ domoticz_user }}"
-#     group: "{{ domoticz_group }}"
-#     state: directory
-#   tags:
-#     - domoticz
-#     - installation
-#     - directory
-
 - name: "get Domoticz source code"
   git:
     repo: "{{ domoticz_repo }}"
