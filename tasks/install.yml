@@ -10,10 +10,16 @@
     - source
 
 - name: "compile Domoticz source code"
-  command: "cmake -DCMAKE_BUILD_TYPE=Release ."
-  args:
-    chdir: "{{ domoticz_download_dir }}/{{ domoticz_src }}"
-  tags:
-    - domoticz
-    - installation
-    - compile
+  block:
+    - command: "cmake -DCMAKE_BUILD_TYPE=Release ."
+      args:
+        chdir: "{{ domoticz_download_dir }}/{{ domoticz_src }}"
+      tags:
+        - domoticz
+        - installation
+        - compile
+    - command: "make -j 3"
+      tags:
+        - domoticz
+        - installation
+        - compile
