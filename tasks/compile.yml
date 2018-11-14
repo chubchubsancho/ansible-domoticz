@@ -1,0 +1,27 @@
+---
+- name: "get Domoticz source code"
+  git:
+    repo: "{{ domoticz_repo }}"
+    clone: true
+    dest: "{{ domoticz_download_dir }}/{{ domoticz_install_dir }}"
+  tags:
+    - domoticz
+    - installation
+    - source
+
+- name: "compile Domoticz source code"
+  block:
+    - command: "cmake -DCMAKE_BUILD_TYPE=Release ."
+      args:
+        chdir: "{{ domoticz_download_dir }}/{{ domoticz_install_dir }}"
+      tags:
+        - domoticz
+        - installation
+        - compile
+    - command: "make -j 3"
+      args:
+        chdir: "{{ domoticz_download_dir }}/{{ domoticz_istall_dir }}"
+      tags:
+        - domoticz
+        - installation
+        - compile
