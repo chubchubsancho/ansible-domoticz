@@ -8,6 +8,18 @@
     - installation
     - release
 
+- name: "ensure domoticz installation directory exist"
+  file:
+    path: "{{ domoticz_download_dir }}/{{ domoticz_install_dir }}"
+    state: directory
+    owner: "{{ domoticz_user }}"
+    group: "{{ domoticz_group }}"
+    mode: 0775
+  tags:
+    - domoticz
+    - installation
+    - release
+
 - name: "unarchive domoticz release package"
   unarchive:
     src: "{{ domoticz_download_dir }}/{{ domoticz_package }}"
