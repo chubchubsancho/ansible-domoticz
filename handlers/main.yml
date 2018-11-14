@@ -1,5 +1,5 @@
 ---
-- name: "restart domoticz"
+- name: "start domoticz"
   service:
     name: domoticz
-    state: restarted
+    state: started

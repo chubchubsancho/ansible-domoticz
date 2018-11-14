@@ -11,20 +11,13 @@
     - installation
     - autostart
 
-- name: "debug init script"
-  block:
-    - command: "cat /{{ domoticz_systemd }}"
-      register: result
-    - debug:
-        var: result
-
 - name: "autostart domoticz and restart service"
   systemd:
-    name: domoticz.service
+    name: domoticz
     enabled: true
     daemon_reload: true
-    state: started
   register: domoticz_status
+  notify: start domoticz
   tags:
     - domoticz
     - installation
