@@ -14,12 +14,14 @@ lint:
 
 platforms:
   - name: domoticz-Debian9
-    image: debian:stretch
+    image: lansible/debian:stretch
 
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
-    options:
-      vvv: true
-      # c: molecule/default/rules/ansible-lint.yml
+    # options:
+    # c: molecule/default/rules/ansible-lint.yml
+
+scenario:
+  name: default
