@@ -1,27 +1,21 @@
 ---
-- name: "get Domoticz source code"
-  git:
-    repo: "{{ domoticz_repo }}"
-    clone: true
-    dest: "{{ domoticz_download_dir }}/{{ domoticz_src }}"
+- name: "download domoticz release package"
+  get_url:
+    url: "{{ domoticz_release_url }}/{{ domoticz_package }}"
+    dest: "{{ domoticz_download_dir }}"
   tags:
     - domoticz
     - installation
-    - source
+    - release
 
-- name: "compile Domoticz source code"
-  block:
-    - command: "cmake -DCMAKE_BUILD_TYPE=Release ."
-      args:
-        chdir: "{{ domoticz_download_dir }}/{{ domoticz_src }}"
-      tags:
-        - domoticz
-        - installation
-        - compile
-    - command: "make -j 3"
-      args:
-        chdir: "{{ domoticz_download_dir }}/{{ domoticz_src }}"
-      tags:
-        - domoticz
-        - installation
-        - compile
+- name: "unarchive domoticz release package"
+  unarchive:
+    src: "{{ domoticz_download_dir }}/{{ domoticz_package }}"
+    dest: "{{ domoticz_download_dir }}/{{ domoticz_install_dir }}"
+    owner: "{{ domoticz_user }}"
+    group: "{{ domoticz_group }}"
+    remote_src: true
+  tags:
+    - domoticz
+    - installation
+    - release
