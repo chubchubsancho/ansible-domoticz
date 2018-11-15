@@ -1,0 +1,17 @@
+---
+- name: "install systemd"
+  apt:
+    name: "{{ item }}"
+    update_cache: true
+    state: present
+  with_items:
+    - systemd
+    - systemd-sysv
+
+- name: "remove unwanted systemd "
+  systemd:
+    name: "{{ item }}"
+    masked: true
+  with_items:
+    - dev-hugepages.mount
+    - sys-fs-fuse-connections.mount
