@@ -22,6 +22,7 @@ platforms:
     command: "/lib/systemd/systemd"
     env:
       container: docker
+    stop_signal: SIGRTMIN+3
 
 provisioner:
   name: ansible
