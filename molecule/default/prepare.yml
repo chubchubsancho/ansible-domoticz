@@ -5,12 +5,11 @@
   tasks:
     - name: "install systemd"
       apt:
-        name: "{{ item }}"
+        name:
+          - systemd
+          - systemd-sysv
         update_cache: true
         state: present
-      with_items:
-        - systemd
-        - systemd-sysv
 
     - name: "remove unwanted systemd "
       systemd:
