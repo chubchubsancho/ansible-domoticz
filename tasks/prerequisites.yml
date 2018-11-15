@@ -20,3 +20,14 @@
     - domoticz
     - installation
     - prerequisites
+
+- name: "install libssl1.0.0"
+  block:
+    - name: "download package"
+      get_url:
+        url: "{{ domoticz_libssl_url }}"
+        dest: "{{ domoticz_download_dir }}/libssl1.0.0.deb"
+    - name: "install package"
+      apt:
+        deb: "{{ domoticz_download_dir }}/libssl1.0.0.deb"
+        state: present
