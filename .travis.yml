@@ -8,15 +8,15 @@ env:
   global:
     - fast_finish =  true
 
-matrix:
-  include:
-    - env:
-
 before_install:
   - sudo apt-get -qq update
 install:
   - pip install molecule
   - pip install docker
 script:
-  # - while sleep 9m; do echo "=====[ $SECONDS seconds still running ]====="; done & molecule test
-  - molecule test
+  - docker run --rm -it \                                                                                                            
+    --mount type=bind,source="$(pwd)"/,target=/tmp/$(basename "$PWD") \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -w /tmp/$(basename "$PWD") \
+    quay.io/ansible/molecule:latest \
+    sudo molecule test
