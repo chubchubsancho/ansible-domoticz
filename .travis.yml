@@ -7,13 +7,5 @@ services:
 env:
   global:
     - fast_finish =  true
-before_install:
-  - docker pull quay.io/ansible/molecule:latest
-  - docker run --rm -it \
-    --mount type=bind,source="$(pwd)",target=/tmp/$(basename "$PWD") \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    -w /tmp/$(basename "$PWD") \
-    quay.io/ansible/molecule:latest \
-    sudo molecule test
 script:
-  - sudo molecule test
+  - docker run --rm -it --mount type=bind,source="$(pwd)",target=/tmp/$(basename "$PWD") -v /var/run/docker.sock:/var/run/docker.sock -w /tmp/$(basename "$PWD") quay.io/ansible/molecule:latest sudo molecule test
