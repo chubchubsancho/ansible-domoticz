@@ -8,8 +8,8 @@ env:
   global:
     - fast_finish =  true
 script:
-  - > 
-     docker run --rm -it 
+  - >
+     docker run --rm -it
      --mount type=bind,source="$(pwd)",target=/tmp/$(basename "$PWD")
      -v /var/run/docker.sock:/var/run/docker.sock
      -w /tmp/$(basename "$PWD")
