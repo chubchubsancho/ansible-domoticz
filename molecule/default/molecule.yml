@@ -15,6 +15,11 @@ lint:
 platforms:
   - name: domoticz-Debian9
     image: lansible/debian:stretch
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - "/sys/fs/cgroups:/sys/fs/cgroups:rw"
+    command: "/usr/sbin/init"
 
 provisioner:
   name: ansible
