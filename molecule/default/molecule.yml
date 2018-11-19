@@ -10,7 +10,7 @@ driver:
 lint:
   name: yamllint
   options:
-    config-file: molecule/default/rules/yaml-lint.yml
+    config-file: molecule/ressources/rules/yaml-lint.yml
 
 platforms:
   - name: domoticz-Debian9
@@ -27,6 +27,10 @@ platforms:
 provisioner:
   name: ansible
   # log: true
+  inventory:
+    links:
+      group_vars: molecule/default/group_vars/
+      host_vars: molecule/default/host_vars/
   options:
     vvv: true
   lint:
