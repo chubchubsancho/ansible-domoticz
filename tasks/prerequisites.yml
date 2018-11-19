@@ -23,11 +23,11 @@
 
 - name: "install libssl1.0.0"
   block:
-    - name: "download package"
+    - name: "download libssl1.0.0 package"
       get_url:
         url: "{{ domoticz_libssl_url }}"
         dest: "{{ domoticz_download_dir }}/libssl1.0.0.deb"
-    - name: "install package"
+    - name: "install libssl1.0.0 package"
       apt:
         deb: "{{ domoticz_download_dir }}/libssl1.0.0.deb"
         state: present

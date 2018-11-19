@@ -5,8 +5,12 @@ services:
   - docker
 
 env:
-  global:
-    - fast_finish =  true
+  - scenario=default
+  - scenario=beta
+
+matrix:
+  fast_finish: true
+
 script:
   - >
      docker run --rm -it
@@ -14,7 +18,7 @@ script:
      -v /var/run/docker.sock:/var/run/docker.sock
      -w /tmp/$(basename "$PWD")
      quay.io/ansible/molecule:latest
-     sudo molecule test
+     sudo molecule test --scenario-name $scenario
 
 notifications:
   email:

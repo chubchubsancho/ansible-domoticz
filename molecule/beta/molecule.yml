@@ -13,7 +13,7 @@ lint:
     config-file: molecule/ressources/rules/yaml-lint.yml
 
 platforms:
-  - name: domoticz-Debian9
+  - name: domoticzbeta-Debian9
     image: lansible/debian:stretch
     capabilities:
       - SYS_ADMIN
@@ -24,7 +24,7 @@ platforms:
       container: docker
     stop_signal: SIGRTMIN+3
     groups:
-      - default
+      - beta
 
 provisioner:
   name: ansible
@@ -45,4 +45,4 @@ provisioner:
     # c: molecule/default/rules/ansible-lint.yml
 
 scenario:
-  name: default
+  name: beta
