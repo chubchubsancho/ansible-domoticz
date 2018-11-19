@@ -5,8 +5,8 @@ services:
   - docker
 
 env:
-- scenario=default
-- scenario=beta
+  - scenario=default
+  - scenario=beta
 
 matrix:
   fast_finish: true
