@@ -31,6 +31,10 @@ provisioner:
     links:
       group_vars: group_vars/
       host_vars: host_vars/
+  playbooks:
+    create: ../ressources/create.yml
+    prepare: ../ressources/prepare.yml
+    converge: ../ressources/playbook.yml
   options:
     vvv: true
   lint:
