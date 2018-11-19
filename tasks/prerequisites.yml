@@ -31,3 +31,4 @@
       apt:
         deb: "{{ domoticz_download_dir }}/libssl1.0.0.deb"
         state: present
+  when: not domoticz_beta
