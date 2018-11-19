@@ -15,3 +15,8 @@ script:
      -w /tmp/$(basename "$PWD")
      quay.io/ansible/molecule:latest
      sudo molecule test
+
+notifications:
+  email:
+    on_failure: change
+    on_success: never
