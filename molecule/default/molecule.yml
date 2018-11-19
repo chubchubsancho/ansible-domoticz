@@ -23,6 +23,8 @@ platforms:
     env:
       container: docker
     stop_signal: SIGRTMIN+3
+    groups:
+      - default
 
 provisioner:
   name: ansible
