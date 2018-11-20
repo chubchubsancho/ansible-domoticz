@@ -7,6 +7,7 @@ services:
 env:
   - scenario=default
   - scenario=beta
+  - scenario=source
 
 matrix:
   fast_finish: true
