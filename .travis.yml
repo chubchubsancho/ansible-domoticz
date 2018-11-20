@@ -19,7 +19,7 @@ script:
      -v /var/run/docker.sock:/var/run/docker.sock
      -w /tmp/$(basename "$PWD")
      quay.io/ansible/molecule:latest
-     sudo molecule test --scenario-name $scenario
+     sudo while sleep 9m; do echo "=====[ $SECONDS seconds still running ]====="; done & molecule test --scenario-name $scenario
 
 notifications:
   email:
