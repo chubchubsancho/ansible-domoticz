@@ -37,12 +37,11 @@ provisioner:
     create: ../ressources/create.yml
     prepare: ../ressources/prepare.yml
     converge: ../ressources/playbook.yml
-  options:
-    vvv: true
   lint:
     name: ansible-lint
-    # options:
-    # c: molecule/default/rules/ansible-lint.yml
+    options:
+      force-color: true
+      # c: molecule/default/rules/ansible-lint.yml
 
 scenario:
   name: default
