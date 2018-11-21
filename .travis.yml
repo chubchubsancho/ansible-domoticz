@@ -7,13 +7,14 @@ services:
 env:
   - scenario=default
   - scenario=beta
+  - scenario=source
 
 matrix:
   fast_finish: true
 
 script:
   - >
-     docker run --rm -it
+     travis_wait 20 sleep infinity & docker run --rm -it
      --mount type=bind,source="$(pwd)",target=/tmp/$(basename "$PWD")
      -v /var/run/docker.sock:/var/run/docker.sock
      -w /tmp/$(basename "$PWD")

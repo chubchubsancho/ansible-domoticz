@@ -1,0 +1,59 @@
+---
+dependency:
+  name: galaxy
+  options:
+    role-files: requirements.yml
+
+driver:
+  name: docker
+
+lint:
+  name: yamllint
+  options:
+    config-file: molecule/ressources/rules/yaml-lint.yml
+
+platforms:
+  - name: domoticzsource-Debian9
+    image: lansible/debian:stretch
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:rw"
+    command: "/lib/systemd/systemd"
+    env:
+      container: docker
+    stop_signal: SIGRTMIN+3
+    groups:
+      - source
+
+provisioner:
+  name: ansible
+  # log: true
+  inventory:
+    links:
+      group_vars: group_vars/
+      host_vars: host_vars/
+  playbooks:
+    create: ../ressources/create.yml
+    prepare: ../ressources/prepare.yml
+    converge: ../ressources/playbook.yml
+  options:
+    vvv: true
+  lint:
+    name: ansible-lint
+    # options:
+    # c: molecule/default/rules/ansible-lint.yml
+
+scenario:
+  name: source
+  test_sequence:
+    - lint
+    - destroy
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - converge
+    - side_effect
+    - verify
+    - destroy

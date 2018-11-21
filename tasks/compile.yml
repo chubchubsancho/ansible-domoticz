@@ -20,8 +20,21 @@
         - compile
     - command: "make -j 3"
       args:
-        chdir: "{{ domoticz_download_dir }}/{{ domoticz_istall_dir }}"
+        chdir: "{{ domoticz_download_dir }}/{{ domoticz_install_dir }}"
       tags:
         - domoticz
         - installation
         - compile
+
+- name: "fix right on domoticz installation directory"
+  file:
+    path: "{{ domoticz_download_dir }}/{{ domoticz_install_dir }}"
+    state: directory
+    owner: "{{ domoticz_user }}"
+    group: "{{ domoticz_group }}"
+    mode: 0775
+    recurse: true
+  tags:
+    - domoticz
+    - installation
+    - release
