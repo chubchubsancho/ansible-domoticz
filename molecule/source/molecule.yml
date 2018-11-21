@@ -7,11 +7,6 @@ dependency:
 driver:
   name: docker
 
-lint:
-  name: yamllint
-  options:
-    config-file: molecule/ressources/rules/yaml-lint.yml
-
 platforms:
   - name: domoticzsource-Debian9
     image: lansible/debian:stretch
@@ -39,15 +34,10 @@ provisioner:
     converge: ../ressources/playbook.yml
   options:
     vvv: true
-  lint:
-    name: ansible-lint
-    # options:
-    # c: molecule/default/rules/ansible-lint.yml
 
 scenario:
   name: source
   test_sequence:
-    - lint
     - destroy
     - dependency
     - syntax
