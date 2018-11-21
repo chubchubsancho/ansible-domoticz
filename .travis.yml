@@ -5,21 +5,33 @@ services:
   - docker
 
 env:
-  - scenario=default
+  - scenario=stable
   - scenario=beta
   - scenario=source
 
 matrix:
   fast_finish: true
 
-script:
-  - >
-     travis_wait 20 sleep infinity & docker run --rm -it
-     --mount type=bind,source="$(pwd)",target=/tmp/$(basename "$PWD")
-     -v /var/run/docker.sock:/var/run/docker.sock
-     -w /tmp/$(basename "$PWD")
-     quay.io/ansible/molecule:latest
-     sudo molecule test --scenario-name $scenario
+jobs:
+  include:
+    - stage: linter
+      script:
+        - >
+           docker run --rm -it
+           --mount type=bind,source="$(pwd)",target=/tmp/$(basename "$PWD")
+           -v /var/run/docker.sock:/var/run/docker.sock
+           -w /tmp/$(basename "$PWD")
+           quay.io/ansible/molecule:latest
+           sudo molecule lint
+    - stage: deploy
+      script:
+        - >
+           travis_wait 20 sleep infinity & docker run --rm -it
+           --mount type=bind,source="$(pwd)",target=/tmp/$(basename "$PWD")
+           -v /var/run/docker.sock:/var/run/docker.sock
+           -w /tmp/$(basename "$PWD")
+           quay.io/ansible/molecule:latest
+           sudo molecule test --scenario-name $scenario
 
 notifications:
   email:
