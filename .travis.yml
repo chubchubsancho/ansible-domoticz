@@ -4,10 +4,9 @@ language: python
 services:
   - docker
 
-env:
-  - scenario=stable
-  - scenario=beta
-  - scenario=source
+stages:
+  - linter
+  - deploy
 
 matrix:
   fast_finish: true
@@ -24,6 +23,10 @@ jobs:
            quay.io/ansible/molecule:latest
            sudo molecule lint
     - stage: deploy
+      env:
+        - scenario=stable
+        - scenario=beta
+        # - scenario=source
       script:
         - >
            travis_wait 20 sleep infinity & docker run --rm -it
