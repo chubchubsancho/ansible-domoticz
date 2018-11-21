@@ -8,7 +8,7 @@ driver:
   name: docker
 
 platforms:
-  - name: domoticzbeta-Debian9
+  - name: domoticz-Debian9
     image: lansible/debian:stretch
     capabilities:
       - SYS_ADMIN
@@ -19,7 +19,7 @@ platforms:
       container: docker
     stop_signal: SIGRTMIN+3
     groups:
-      - beta
+      - default
 
 provisioner:
   name: ansible
@@ -36,7 +36,7 @@ provisioner:
     vvv: true
 
 scenario:
-  name: beta
+  name: stable
   test_sequence:
     - destroy
     - dependency

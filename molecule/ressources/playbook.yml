@@ -1,8 +1,10 @@
 ---
 - name: Converge
   hosts: all
-  roles:
-    - role: ansible-domoticz
+  tasks:
+    - name: "deploy domoticz"
+      import_role:
+        name: ansible-domoticz
 
   post_tasks:
     - name: Wait for Domoticz to succesfully restart
