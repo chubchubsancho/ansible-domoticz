@@ -47,7 +47,7 @@ provisioner:
 scenario:
   name: source
   test_sequence:
-    - int
+    - lint
     - destroy
     - dependency
     - syntax
