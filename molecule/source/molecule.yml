@@ -46,3 +46,14 @@ provisioner:
 
 scenario:
   name: source
+  test_sequence:
+    - int
+    - destroy
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - converge
+    - side_effect
+    - verify
+    - destroy
