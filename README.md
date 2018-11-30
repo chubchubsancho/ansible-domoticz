@@ -1,6 +1,7 @@
 # ansible-domoticz
 
 [![Build Status](https://travis-ci.com/chubchubsancho/ansible-domoticz.svg?branch=master)](https://travis-ci.com/chubchubsancho/ansible-domoticz)
+[![License] (https://img.shields.io/badge/license-MIT-blue.svg?logo=github&style=flat)](https://raw.githubusercontent.com/chubchubsancho/ansible-domoticz/master/LICENSE)
 
 1. [Overview](#overview)
 1. [Description](#role-description)
