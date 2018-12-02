@@ -5,8 +5,9 @@ services:
   - docker
 
 stages:
-  - linter
-  - deploy
+  # - linter
+  # - deploy
+  - rpi-deploy
 
 matrix:
   fast_finish: true
@@ -43,6 +44,30 @@ jobs:
            travis_wait 20 sleep infinity & docker run --rm -it
            --mount type=bind,source="$(pwd)",target=/tmp/$(basename "$PWD")
            -v /var/run/docker.sock:/var/run/docker.sock
+           -w /tmp/$(basename "$PWD")
+           quay.io/ansible/molecule:latest
+           sudo molecule test --scenario-name $scenario
+    - stage: rpi-deploy
+      name: deploy domoticz stable
+      env:
+        - scenario=rpi-stable
+      before_script:
+        - apt-get update && apt-get install -y --no-install-recommends qemu-user-static binfmt-support
+        - update-binfmts --enable qemu-arm
+        - update-binfmts --display qemu-arm
+        - >
+           mount binfmt_misc -t binfmt_misc /proc/sys/fs/binfmt_misc
+           echo
+           ':arm:M::\x7fELF\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x28\x00:\xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff\xff:/usr/bin/qemu-arm-static:'
+           > /proc/sys/fs/binfmt_misc/register
+
+
+      script:
+        - >
+           travis_wait 20 sleep infinity & docker run --rm -it
+           --mount type=bind,source="$(pwd)",target=/tmp/$(basename "$PWD")
+           -v /var/run/docker.sock:/var/run/docker.sock
+           -v /usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static
            -w /tmp/$(basename "$PWD")
            quay.io/ansible/molecule:latest
            sudo molecule test --scenario-name $scenario

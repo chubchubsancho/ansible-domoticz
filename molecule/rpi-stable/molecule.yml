@@ -1,0 +1,51 @@
+---
+dependency:
+  name: galaxy
+  options:
+    role-files: requirements.yml
+
+driver:
+  name: docker
+
+platforms:
+  - name: domoticz-Raspbian
+    image: resin/rpi-raspbian:stretch-20181024
+    capabilities:
+      - SYS_ADMIN
+    volumes:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:rw"
+      - "/usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static"
+    command: "/lib/systemd/systemd"
+    env:
+      container: docker
+    stop_signal: SIGRTMIN+3
+    groups:
+      - rpi-stable
+
+provisioner:
+  name: ansible
+  # log: true
+  inventory:
+    links:
+      group_vars: group_vars/
+      host_vars: host_vars/
+  playbooks:
+    create: ../ressources/create.yml
+    prepare: ../ressources/prepare.yml
+    converge: ../ressources/playbook.yml
+  options:
+    vvv: true
+
+scenario:
+  name: rpi-stable
+  test_sequence:
+    - destroy
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - converge
+    - idempotence
+    - side_effect
+    - verify
+    - destroy
