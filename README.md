@@ -15,17 +15,46 @@
 
 ## Description
 
-This role install all prerequisites to domoticz installation and finaly deploy it on system.
+This role install all prerequisites to Domoticz installation and finaly deploy it on system.
+You ca as well install stable release, beta release and copile Domoticz from source.
 
 Role is under development so feature will be add as they have been developped.
-
-for now it will just prepare system.
 
 ## Setup
 
 Copy this role in your roles folder without *ansible-* in the name.
 
 ## Usage
+
+* install domoticz stable release
+
+```yaml
+---
+# The user which the Domoticz daemon run as
+domoticz_user: "domoticz"
+
+# The group which the Domoticz daemon run as
+domoticz_group: "domoticz"
+
+# The directory where the downloaded files will be placed
+domoticz_download_dir: "/home/domoticz"
+
+# The name of the untarred Domoticz directory
+domoticz_install_dir: "domoticz"
+
+# The domoticz port
+domoticz_port: 8080
+
+# Use SSL for domoticz
+domoticz_https: false
+domoticz_https_port: 8081
+
+# install Domoticz beta
+domoticz_beta: false
+
+# compile domoticz from source
+domoticz_source: false
+```
 
 ## Limitations
 
