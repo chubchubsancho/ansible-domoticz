@@ -9,13 +9,13 @@ driver:
 
 platforms:
   - name: domoticz-Raspbian
-    image: resin/rpi-raspbian:stretch-20181024
-    capabilities:
-      - SYS_ADMIN
-    volumes:
-      - "/sys/fs/cgroup:/sys/fs/cgroup:rw"
-      - "/usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static"
-    command: "/lib/systemd/systemd"
+    image: resin/raspberrypi3-python
+    # capabilities:
+    #   - SYS_ADMIN
+    # volumes:
+    #   - "/sys/fs/cgroup:/sys/fs/cgroup:rw"
+    #   - "/usr/bin/qemu-arm-static:/usr/bin/qemu-arm-static"
+    # command: "/sbin/init"
     env:
       container: docker
     stop_signal: SIGRTMIN+3
@@ -31,7 +31,7 @@ provisioner:
       host_vars: host_vars/
   playbooks:
     create: ../ressources/create.yml
-    prepare: ../ressources/prepare.yml
+    # prepare: ../ressources/prepare.yml
     converge: ../ressources/playbook.yml
   options:
     vvv: true
